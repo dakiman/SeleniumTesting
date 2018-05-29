@@ -68,7 +68,7 @@ class NewsTest extends WebDriverConfig {
         driver.get(baseUrl + "/admin/news");
         Assert.assertTrue(driver.getPageSource().contains(title_mk_value));
 
-        WebElement editBtn = driver.findElement(By.xpath("//div[div/text() = '"+title_mk_value+"']/a/button[@class='btn btn-success btn-block m-b-1']"));
+        WebElement editBtn = driver.findElement(By.xpath("//div[div/text() = '"+title_mk_value+"']/a/button[contains(@class, 'btn-success')]"));
         editBtn.click();
         Assert.assertTrue(driver.getPageSource().contains(title_mk_value));
 
@@ -86,7 +86,7 @@ class NewsTest extends WebDriverConfig {
         description_en.sendKeys(description_en_value);
         title_mk.sendKeys(title_mk_value);
         description_mk.sendKeys(description_mk_value);
-        driver.findElement(By.xpath("//button[@class='btn btn-primary btn-block']")).click();
+        driver.findElement(By.xpath("//button[contains(@class, 'btn-primary')]")).click();
 
         Assert.assertTrue(driver.getPageSource().contains(title_mk_value));
         Assert.assertTrue(driver.getPageSource().contains(description_mk_value));
@@ -124,7 +124,7 @@ class NewsTest extends WebDriverConfig {
         driver.get(baseUrl + "/admin/news");
         Assert.assertTrue(driver.getPageSource().contains(title_mk_value));
         //find and click the delete button of the element we created
-        WebElement deleteBtn = driver.findElement(By.xpath("//div[div/text() = '"+ title_mk_value +"']/button[@class='btn btn-delete btn-danger btn-block m-b-1']"));
+        WebElement deleteBtn = driver.findElement(By.xpath("//div[div/text() = '"+ title_mk_value +"']/button[contains(@class, 'btn-delete')]"));
         deleteBtn.click();
         //wait for modal to appear and click confirm
         WebElement confirmBtn = (new WebDriverWait(driver, 10))
